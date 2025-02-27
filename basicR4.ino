@@ -25,17 +25,19 @@
 
 
 void IRAM_ATTR stateChange() {
-  if (digitalRead(interruptPin) == LOW) {
-    stopTime = micros();
-  } else {
-    startTime = micros();
-  }
-  difference = (stopTime - startTime);
-  if (difference > filter) {
-    relay_[0]->toggle();
-    delay(debounce);
-    Serial1.print("Filter: ");Serial1.println(filter);
-    Serial1.print("Debounce: ");Serial1.println(debounce);
+  if (ready == 1) {
+    if (digitalRead(interruptPin) == LOW) {
+      stopTime = micros();
+    } else {
+      startTime = micros();
+    }
+    difference = (stopTime - startTime);
+    if (difference > filter) {
+      relay_[0]->toggle();
+      // delay(debounce);
+      // Serial1.print("Filter: ");Serial1.println(filter);
+      // Serial1.print("Debounce: ");Serial1.println(debounce);
+    }
   }
 }
 
@@ -56,7 +58,6 @@ void setup() {
 
   #include "stor.h"
 
-  attachInterrupt(interruptPin,stateChange,CHANGE);
 
 
   for (int i = 0; i < relayQty; i++) {
@@ -95,9 +96,14 @@ void setup() {
   // new Supla::Device::EnterCfgModeAfterPowerCycle(5000, 3, true);
   Serial1.print("Filter: ");Serial1.println(filter);
 
+  attachInterrupt(interruptPin,stateChange,CHANGE);
 }
 
 void loop() {
+  if (ready == 0) {
+    ready = 1;
+    Serial1.print("Jestem ready");
+  }
   SuplaDevice.iterate();
 
 }

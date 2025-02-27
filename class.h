@@ -14,10 +14,10 @@ class customIterate : public Supla::Element {
       }
     }
 
-    if (tick + 1000 < millis()) {
-      tick = millis();
-    //   toggle(STATUS_LED_GPIO);
-    }
+    // if (tick + 1000 < millis()) {
+    //   tick = millis();
+    // //   toggle(STATUS_LED_GPIO);
+    // }
   }
 
  protected:
