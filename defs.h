@@ -6,33 +6,27 @@ espboards:
   esp32:3.1.1
 */
 
-#define SOFT_VERSION "25.02.1 - beta"
+#define SOFT_VERSION "25.02.2a"
 
 #ifdef ESP8266
   #define STATUS_LED_GPIO 2
   #define cfgButtonPin 0
-
 #elif defined ARDUINO_ARCH_ESP32
-  #ifdef LOLIN_C3_PICO 
-    #define STATUS_LED_GPIO 7
-  #elif defined ESP32_C3_SUPERMINI
-    #define STATUS_LED_GPIO 8   
-  #else
-    #define STATUS_LED_GPIO 6
-  #endif
-  #define cfgButtonPin 9  
+  #define STATUS_LED_GPIO 6
+  #define cfgButtonPin 9
 #endif
+
+#define DEF_RELAY_QTY 1
 
 #ifdef ESP8266
-  #define DEF_RELAY_QTY 2
-  #define RELAY_PIN_1 14
-  #define RELAY_PIN_2 12
-  #define BUTTON_PIN_1 5
-  #define BUTTON_PIN_2 4
+  #define RELAY_PIN_1 4 //D2
+  #define INTERRUPT_PIN 5 //D1
+  #define BUTTON_PIN_1 14 //D5
 #elif defined ARDUINO_ARCH_ESP32
-  #define DEF_RELAY_QTY 1
   #define RELAY_PIN_1 4
-  #define RELAY_PIN_2 18
-  #define BUTTON_PIN_1 5
-  #define BUTTON_PIN_2 19
+  #define INTERRUPT_PIN 5
+  #define BUTTON_PIN_1 2
 #endif
+
+#define RELAY_PIN_2 1 //D8
+#define BUTTON_PIN_2 3 //D0

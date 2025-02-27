@@ -25,9 +25,11 @@ new Supla::Html::DivEnd();
 
 new Supla::Html::DivBegin("box");
 new Supla::Html::H3Tag("Config");
-new Supla::Html::ButtonHoldTimeParameters();
-new Supla::Html::ButtonMulticlickParameters();
+// new Supla::Html::ButtonHoldTimeParameters();
+// new Supla::Html::ButtonMulticlickParameters();
 new Supla::Html::buttonPara;
-
+// new Supla::Html::ButtonRefresh();
+new Supla::Html::DivEnd();
+// new Supla::Html::ButtonUpdate();
 
 #endif

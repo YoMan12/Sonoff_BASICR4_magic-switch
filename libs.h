@@ -36,11 +36,15 @@ Supla::EspWebServer suplaServer;
 #include <supla/network/html/custom_checkbox_parameter.h>
 #include <supla/network/html/custom_text_parameter.h>
 // #include <supla/network/html/select_input_parameter.h>
-// Supla::Html::SelectInputParameter *relayState_[4] = {};
+// Supla::Html::SelectInputParameter *relayState_[2] = {};
 #include <supla/network/html/button_type_parameters.h>
-Supla::Html::ButtonTypeParameters *buttonType_[4] = {};
+Supla::Html::ButtonTypeParameters *buttonType_[2] = {};
 #include <supla/network/html/button_hold_time_parameters.h>
 #include <supla/network/html/button_multiclick_parameters.h>
+#include <supla/network/html/button_update.h>
+// Supla::Html::ButtonUpdate buttUpdate;
+// #include <supla/network/html/button_refresh.h>
+// Supla::Html::ButtonRefresh buttRefresh;
 #include <supla/device/enter_cfg_mode_after_power_cycle.h>
 //---------------------------------------------------------------------------//
 
@@ -59,11 +63,12 @@ Supla::Html::ButtonTypeParameters *buttonType_[4] = {};
 
 #include <supla/control/button.h>
 Supla::Control::Button *cfgButton = nullptr;
-Supla::Control::Button *button_[4] = {};
+Supla::Control::Button *button_[2] = {};
 #include <supla/control/relay.h>
-Supla::Control::Relay *relay_[4] = {};
+Supla::Control::Relay *relay_[2] = {};
+Supla::Control::Relay *relay = nullptr;
 #include <supla/control/action_trigger.h>
-Supla::Control::ActionTrigger *at_[4] = {};
+Supla::Control::ActionTrigger *at_[2] = {};
 //---------------------------------------------------------------------------//
 
 // #include <supla/clock/clock.h>

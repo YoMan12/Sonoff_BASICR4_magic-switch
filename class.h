@@ -4,6 +4,7 @@
 class customIterate : public Supla::Element {
  public: customIterate() {}
 
+
   void iterateAlways() {
 
     if (!webServer) {
@@ -12,14 +13,27 @@ class customIterate : public Supla::Element {
         webServer = true;
       }
     }
+
+    if (tick + 1000 < millis()) {
+      tick = millis();
+    //   toggle(STATUS_LED_GPIO);
+    }
   }
 
  protected:
   bool webServer = false;
+  uint32_t tick = 0;
+  uint32_t licznik = 0;
 
 };
 
 customIterate customIterate;
 
+// class customButton : public Supla::Control::Button {
+//   public: customButton () {}
+
+
+
+// };
 
 #endif
