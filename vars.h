@@ -9,7 +9,6 @@ int relayPin[2] = {RELAY_PIN_1,RELAY_PIN_2};
 int buttonPin[2] = {BUTTON_PIN_1, BUTTON_PIN_2};
 int interruptPin = INTERRUPT_PIN;
 int count = 0;
-bool ready = 0;
 
 volatile uint32_t startTime = 0;
 volatile uint32_t stopTime = 0;
