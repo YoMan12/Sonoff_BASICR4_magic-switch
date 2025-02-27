@@ -5,7 +5,7 @@ namespace Supla {
 namespace Html {
   
 //---------------------------------------------------------------------------//
-//                                                                  temperature                                                           
+//                                                                   buttonPara                                                           
 class buttonPara : public Supla::HtmlElement { 
  public:
   buttonPara()

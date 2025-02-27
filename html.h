@@ -5,7 +5,7 @@ new Supla::Html::DeviceInfo (&SuplaDevice);
 new Supla::Html::WifiParameters;
 new Supla::Html::ProtocolParameters;
 new Supla::Html::StatusLedParameters;
-// Supla::Html::StatusLedParameters htmlStatusLed;
+Supla::Html::StatusLedParameters htmlStatusLed;
 SuplaDevice.setName("Yo -");
 SuplaDevice.setCustomHostnamePrefix("Supla-Yo-");
 SuplaDevice.setSwVersion(SOFT_VERSION);
@@ -23,13 +23,9 @@ textCmd->addAction(Supla::RESET_TO_FACTORY_SETTINGS,
                                               SuplaDevice, Supla::ON_EVENT_1);
 new Supla::Html::DivEnd();
 
-new Supla::Html::DivBegin("box");
-new Supla::Html::H3Tag("Config");
-// new Supla::Html::ButtonHoldTimeParameters();
-// new Supla::Html::ButtonMulticlickParameters();
-new Supla::Html::buttonPara;
-// new Supla::Html::ButtonRefresh();
-new Supla::Html::DivEnd();
-// new Supla::Html::ButtonUpdate();
+// new Supla::Html::DivBegin("box");
+// new Supla::Html::H3Tag("Config");
+// new Supla::Html::buttonPara;
+// new Supla::Html::DivEnd();
 
 #endif

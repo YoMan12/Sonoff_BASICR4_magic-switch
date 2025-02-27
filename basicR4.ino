@@ -25,14 +25,14 @@
 
 
 void IRAM_ATTR stateChange() {
-  if (digitalRead(interruptPin) == LOW) {
+  if (digitalRead(INTERRUPT_PIN) == LOW) {
     stopTime = micros();
   } else {
     startTime = micros();
   }
   difference = (stopTime - startTime);
-  if (difference > filter) {
-    relay_[0]->toggle();
+  if (difference > 780) {
+    relay->toggle();
     // delay(debounce);
   }
 }
@@ -40,59 +40,28 @@ void IRAM_ATTR stateChange() {
 void setup() {
   #include "html.h"
 
-  pinMode(interruptPin, INPUT_PULLUP);
+  pinMode(INTERRUPT_PIN, INPUT_PULLUP);
 
-
-  #ifdef ESP8266
-    Serial.begin(115200);
-    SUPLA_LOG_DEBUG(SOFT_VERSION);
-  #elif defined ARDUINO_ARCH_ESP32
-    Serial1.begin(115200,SERIAL_8N1, 20,21);
-    SUPLA_LOG_DEBUG(SOFT_VERSION);
-    Serial1.println("Startujemy ............. ");
-  #endif
+  Serial1.begin(115200,SERIAL_8N1, 20,21);
+  SUPLA_LOG_DEBUG(SOFT_VERSION);
 
   #include "stor.h"
+  delay(300);
 
-
-
-  for (int i = 0; i < relayQty; i++) {
-    relay_[i] = new Supla::Control::Relay(relayPin[i],true,224);
-    relay_[i]->getChannel()->setChannelNumber(i);
-    relay_[i]->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
-    // relay_[i]->setDefaultStateRestore();
-    relay_[i]->setDefaultStateOff();
-
-    // button_[i] = new Supla::Control::Button(buttonPin[i], pullup, inverted);
-    // button_[i]->addAction(Supla::TOGGLE, relay_[i], Supla::ON_CLICK_1);
-    // // button_[i]->setButtonNumber(i+1);
-    // button_[i]->setSwNoiseFilterDelay(filter);
-    // button_[i]->setDebounceDelay(debounce);
-    // button_[i]->setHoldTime(500);
-    
-    // // buttonType_[i] = new Supla::Html::ButtonTypeParameters(i);
-    // // buttonType_[i]->addMonostableOption();
-    // // buttonType_[i]->addBistableOption();
-
-    // at_[i] = new Supla::Control::ActionTrigger();
-    // at_[i]->getChannel()->setChannelNumber(i+10);
-    // at_[i]->setRelatedChannel(relay_[i]);
-    // at_[i]->attach(button_[i]);
-  }
-
-    // relay = new Supla::Control::Relay(4,true,224);
-    // relay->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
-    // relay->setDefaultStateRestore();
-
-  cfgButton = new Supla::Control::Button(cfgButtonPin, true, true);
+  relay = new Supla::Control::Relay(RELAY_PIN,true,224);
+  relay->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
+  // relay->setDefaultStateRestore();
+  relay->setDefaultStateOff();
+   
+  cfgButton = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
   SuplaDevice.begin();
   
-  // new Supla::Device::EnterCfgModeAfterPowerCycle(5000, 3, true);
+  new Supla::Device::EnterCfgModeAfterPowerCycle(5000, 3, true);
   Serial1.print("Filter: ");Serial1.println(filter);
 
-  attachInterrupt(interruptPin,stateChange,CHANGE);
+  attachInterrupt(INTERRUPT_PIN,stateChange,CHANGE);
 }
 
 void loop() {

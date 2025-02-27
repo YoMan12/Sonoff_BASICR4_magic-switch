@@ -1,14 +1,6 @@
 #ifndef VARS_H_
 #define VARS_H_
 
-// uint32_t buttonQty = DEF_BUTTON_QTY;
-uint32_t relayQty = DEF_RELAY_QTY;
-
-
-int relayPin[2] = {RELAY_PIN_1,RELAY_PIN_2};
-int buttonPin[2] = {BUTTON_PIN_1, BUTTON_PIN_2};
-int interruptPin = INTERRUPT_PIN;
-int count = 0;
 
 volatile uint32_t startTime = 0;
 volatile uint32_t stopTime = 0;
