@@ -5,8 +5,10 @@ Supla® alternative firmware for Sonoff BASIC R4 with magic switch support.
 
 SuplaDevice:
   25.01.03 (2024-11-26) 
-espboards: 
+  espboards: 
   esp32:3.1.1
+
+
   
   Copyright (C) AC SOFTWARE SP. Z O.O.
 
