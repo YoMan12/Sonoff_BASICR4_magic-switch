@@ -22,6 +22,8 @@
 #include "vois.h"
 #include "class.h"
 #include "h_class.h"
+#include "html.h"
+#include "stor.h"
 
 
 void IRAM_ATTR stateChange() {
@@ -38,14 +40,15 @@ void IRAM_ATTR stateChange() {
 }
 
 void setup() {
-  #include "html.h"
+  
+  addHtml();
 
   pinMode(INTERRUPT_PIN, INPUT_PULLUP);
 
   Serial1.begin(115200,SERIAL_8N1, 20,21);
   SUPLA_LOG_DEBUG(SOFT_VERSION);
 
-  #include "stor.h"
+  addStor();
   delay(300);
 
   relay = new Supla::Control::Relay(RELAY_PIN,true,224);
