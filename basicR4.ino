@@ -27,16 +27,16 @@
 
 
 void IRAM_ATTR stateChange() {
+  static uint32_t stopTime = 0;
+  static uint32_t startTime = 0;
+
   if (digitalRead(INTERRUPT_PIN) == LOW) {
     stopTime = micros();
+    hop(stopTime,startTime);
   } else {
     startTime = micros();
   }
-  difference = (stopTime - startTime);
-  if (difference > 780) {
-    relay->toggle();
-    // delay(debounce);
-  }
+  
 }
 
 void setup() {
@@ -53,8 +53,17 @@ void setup() {
 
   relay = new Supla::Control::Relay(RELAY_PIN,true,224);
   relay->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
-  // relay->setDefaultStateRestore();
-  relay->setDefaultStateOff();
+  switch (behaviour) {
+    case 1:
+      relay->setDefaultStateOn();
+      break;
+    case 2:
+      relay->setDefaultStateRestore();
+      break;
+    default:
+      relay->setDefaultStateOff();
+      break;
+  }
    
   cfgButton = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);

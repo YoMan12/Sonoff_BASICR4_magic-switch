@@ -39,7 +39,7 @@ class buttonPara : public Supla::HtmlElement {
                  "<input type=\"number\" min=\"0\" max=\"1000\" step=\"1\" ");
       sender->sendNameAndId(DEBOUNCE_KEY);
       sender->send(" value=\"");
-      inCfgValue = 3;
+      inCfgValue = 5;
       cfg->getUInt32(DEBOUNCE_KEY, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
@@ -52,7 +52,7 @@ class buttonPara : public Supla::HtmlElement {
 
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
-    
+       
     if (cfg && strcmp(key, FILTER_KEY) == 0) {
       uint32_t inFormValue = stringToUInt(value);
 
