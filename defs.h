@@ -1,11 +1,11 @@
 /*
 SuplaDevice:
   25.01.03 (2024-11-26) 
-espboards: 
-  esp32:3.1.1
+espBoards: 
+  esp32:3.1.1 (ESP32C3 Dev Module)
 */
 #define BASICR4
-#define SOFT_VERSION "@YoMan - 2025.02.27/beta"
+#define SOFT_VERSION "2025.03.04 @YoMan"
 
 #define STATUS_LED_GPIO 6
 #define CFG_BUTTON_PIN 9
