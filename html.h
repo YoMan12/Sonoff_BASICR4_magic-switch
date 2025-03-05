@@ -32,7 +32,6 @@ void addHtml () {
   rb->registerValue("Always on", 1);
   rb->registerValue("Restore", 2);
   new Supla::Html::buttonPara;
-  new Supla::Html::DivEnd();
   new Supla::Html::ButtonUpdate(&suplaServer);
 }
 #endif
