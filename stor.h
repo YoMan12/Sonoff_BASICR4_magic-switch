@@ -5,7 +5,7 @@ void addStor () {
   Supla::Storage::Init();
   auto cfg = Supla::Storage::ConfigInstance();
 
-  if (cfg->getUInt32(BEHAVIOUR_KEY, &behaviour)) {
+  if (cfg->getInt32(BEHAVIOUR_KEY, &behaviour)) {
     Serial1.printf("# Param [%s]: %d\n", BEHAVIOUR_KEY, behaviour);
   } else {
     Serial1.printf("# Param[%s] is not set\n", BEHAVIOUR_KEY);
