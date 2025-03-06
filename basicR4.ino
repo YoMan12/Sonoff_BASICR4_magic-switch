@@ -65,7 +65,11 @@ void setup() {
       break;
   }
    
+  // button = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
+  // button->addAction(Supla::TOGGLE, relay, Supla::ON_CLICK_1);
+
   cfgButton = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
+  cfgButton->addAction(Supla::TOGGLE, relay, Supla::ON_CLICK_1);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
   SuplaDevice.begin();

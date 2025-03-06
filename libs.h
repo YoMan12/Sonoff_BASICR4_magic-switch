@@ -46,6 +46,7 @@ HTTPUpdateServer httpUpdater;
 
 #include <supla/control/button.h>
 Supla::Control::Button *cfgButton = nullptr;
+Supla::Control::Button *button = nullptr;
 #include <supla/control/relay.h>
 Supla::Control::Relay *relay = nullptr;
 #include <supla/control/action_trigger.h>
