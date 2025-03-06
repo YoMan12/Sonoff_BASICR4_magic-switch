@@ -24,6 +24,7 @@
 #include "h_class.h"
 #include "html.h"
 #include "stor.h"
+#include <esp_intr_alloc.h>
 
 
 void IRAM_ATTR stateChange() {
@@ -35,8 +36,7 @@ void IRAM_ATTR stateChange() {
     hop(stopTime,startTime);
   } else {
     startTime = micros();
-  }
-  
+  }  
 }
 
 void setup() {
@@ -73,7 +73,10 @@ void setup() {
   new Supla::Device::EnterCfgModeAfterPowerCycle(5000, 3, true);
   Serial1.print("Filter: ");Serial1.println(filter);
 
-  attachInterrupt(INTERRUPT_PIN,stateChange,CHANGE);
+  Supla::Notification::RegisterNotification(-1,true,true,true);  // notifications for device 
+
+  attachInterrupt(INTERRUPT_PIN, stateChange, CHANGE);
+
 }
 
 void loop() {

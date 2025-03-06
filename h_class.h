@@ -52,7 +52,7 @@ class buttonPara : public Supla::HtmlElement {
 
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
-       
+    
     if (cfg && strcmp(key, FILTER_KEY) == 0) {
       uint32_t inFormValue = stringToUInt(value);
 
