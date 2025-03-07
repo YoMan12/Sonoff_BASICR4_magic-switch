@@ -65,8 +65,11 @@ void setup() {
       break;
   }
    
-  // button = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
-  // button->addAction(Supla::TOGGLE, relay, Supla::ON_CLICK_1);
+  timeValue = new Supla::Sensor::GeneralPurposeMeasurement();
+  timeValue->setInitialCaption("Time");
+  timeValue->setDefaultUnitAfterValue("µs");
+  timeValue->setDefaultValuePrecision(0);
+  timeValue->setValue(NAN);
 
   cfgButton = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
   cfgButton->addAction(Supla::TOGGLE, relay, Supla::ON_CLICK_1);
@@ -75,7 +78,6 @@ void setup() {
   SuplaDevice.begin();
   
   new Supla::Device::EnterCfgModeAfterPowerCycle(5000, 3, true);
-  Serial1.print("Filter: ");Serial1.println(filter);
 
   Supla::Notification::RegisterNotification(-1,true,true,true);  // notifications for device 
 

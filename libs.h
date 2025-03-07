@@ -50,6 +50,8 @@ Supla::Control::Button *button = nullptr;
 #include <supla/control/relay.h>
 Supla::Control::Relay *relay = nullptr;
 #include <supla/control/action_trigger.h>
+#include <supla/sensor/general_purpose_measurement.h>
+Supla::Sensor::GeneralPurposeMeasurement *timeValue = nullptr;
 //---------------------------------------------------------------------------//
 
 #include <supla/storage/eeprom.h>

@@ -16,6 +16,7 @@ void hop(uint32_t stop, uint32_t start) {
         relay->toggle();
         debounceTime = millis();
         Supla::Notification::SendF(-1,"Basic R4 - test", "Time: %lu",difference);
+        timeValue->setValue(difference);
       }
     }
   }
