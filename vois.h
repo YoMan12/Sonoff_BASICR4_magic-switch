@@ -12,7 +12,7 @@ void hop(uint32_t stop, uint32_t start) {
     static int32_t debounceTime = 0;
     difference = (stop - start);
     if (millis() - debounceTime > debounce) {
-      if (difference > filter) {
+      if (difference > filter && difference < (filter + 5000))) {
         relay->toggle();
         debounceTime = millis();
         Supla::Notification::SendF(-1,"Basic R4 - test", "Time: %lu",difference);
