@@ -27,7 +27,7 @@ void addHtml () {
   new Supla::Html::DivBegin("box");
   new Supla::Html::H3Tag("Config");
   auto rb = new Supla::Html::SelectInputParameter(
-                            BEHAVIOUR_KEY, "After reset");
+                            BEHAVIOUR_KEY, "Relay after reset");
   rb->registerValue("Always OFF", 0);
   rb->registerValue("Always ON", 1);
   rb->registerValue("Restore", 2);

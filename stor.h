@@ -17,10 +17,16 @@ void addStor () {
     Serial1.printf("# Param[%s] is not set\n", FILTER_KEY);
   }
 
-  // if (cfg->getUInt32(DEBOUNCE_KEY, &debounce)) {
-  //   Serial1.printf("# Param [%s]: %d\n", DEBOUNCE_KEY, debounce);
+  // if (cfg->getUInt32(LIMIT_IS_ON_KEY, &limitIsOn)) {
+  //   Serial1.printf("# Param [%s]: %d\n", LIMIT_IS_ON_KEY, limitIsOn);
   // } else {
-  //   Serial1.printf("# Param[%s] is not set\n", DEBOUNCE_KEY);
+  //   Serial1.printf("# Param[%s] is not set\n", LIMIT_IS_ON_KEY);
+  // }
+
+  // if (cfg->getUInt32(LIMIT_KEY, &limit)) {
+  //   Serial1.printf("# Param [%s]: %d\n", LIMIT_KEY, limit);
+  // } else {
+  //   Serial1.printf("# Param[%s] is not set\n", LIMIT_KEY);
   // }
 }
 

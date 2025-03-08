@@ -21,7 +21,7 @@ class buttonPara : public Supla::HtmlElement {
       sender->sendLabelFor(FILTER_KEY, "Filter");
       sender->send(
               "<input type=\"number\" min=\"0\" max=\"");
-      sender->send(20000);
+      sender->send(10000);
       sender->send("\" step=\"1\" ");
       sender->sendNameAndId(FILTER_KEY);
       sender->send(" value=\"");
@@ -34,13 +34,15 @@ class buttonPara : public Supla::HtmlElement {
       
       // // - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼
       // sender->send("<div class=\"form-field\">");
-      // sender->sendLabelFor(DEBOUNCE_KEY, "Debounce");
+      // sender->sendLabelFor(LIMIT_KEY, "Limit");
       // sender->send(
-      //            "<input type=\"number\" min=\"0\" max=\"1000\" step=\"1\" ");
-      // sender->sendNameAndId(DEBOUNCE_KEY);
+      //         "<input type=\"number\" min=\"");
+      // sender->send(filter+1000);
+      // sender->send("\" max=\"30000\" step=\"1\" ");
+      // sender->sendNameAndId(LIMIT_KEY);
       // sender->send(" value=\"");
       // inCfgValue = 5;
-      // cfg->getUInt32(DEBOUNCE_KEY, &inCfgValue);
+      // cfg->getUInt32(LIMIT_KEY, &inCfgValue);
       // sender->send(inCfgValue);
       // sender->send("\">");
       // sender->send("</div>");
@@ -61,10 +63,10 @@ class buttonPara : public Supla::HtmlElement {
       return true;
     }
           
-    // if (cfg && strcmp(key, DEBOUNCE_KEY) == 0) {
+    // if (cfg && strcmp(key, LIMIT_KEY) == 0) {
     //   uint32_t inFormValue = stringToUInt(value);
-    //   cfg->setUInt32(DEBOUNCE_KEY, inFormValue);
-    //   debounce = inFormValue;
+    //   cfg->setUInt32(LIMIT_KEY, inFormValue);
+    //   limit = inFormValue;
     //   return true;
     // }          
 
@@ -74,6 +76,57 @@ class buttonPara : public Supla::HtmlElement {
  protected:
   uint32_t inCfgValue = 0;
 };  // class buttonPara
+
+//---------------------------------------------------------------------------//
+//                                                                   buttonPara                                                           
+// class buttonPara2 : public Supla::HtmlElement { 
+//  public:
+//   buttonPara2()
+//     : HtmlElement(HTML_SECTION_FORM) {}
+
+//   void send(Supla::WebSender* sender) {
+//     auto cfg = Supla::Storage::ConfigInstance();
+    
+//     if (cfg) {
+
+            
+//       // // - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼
+//       // sender->send("<div class=\"form-field\">");
+//       // sender->sendLabelFor(LIMIT_KEY, "Limit");
+//       // sender->send(
+//       //         "<input type=\"number\" min=\"");
+//       // sender->send(filter+1000);
+//       // sender->send("\" max=\"30000\" step=\"1\" ");
+//       // sender->sendNameAndId(LIMIT_KEY);
+//       // sender->send(" value=\"");
+//       // inCfgValue = 5;
+//       // cfg->getUInt32(LIMIT_KEY, &inCfgValue);
+//       // sender->send(inCfgValue);
+//       // sender->send("\">");
+//       // sender->send("</div>");
+//       // // - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲
+
+
+//     }  // if cfg
+//   }    // sender
+
+//   bool handleResponse(const char* key, const char* value) {
+//     auto cfg = Supla::Storage::ConfigInstance();
+    
+              
+//     // if (cfg && strcmp(key, LIMIT_KEY) == 0) {
+//     //   uint32_t inFormValue = stringToUInt(value);
+//     //   cfg->setUInt32(LIMIT_KEY, inFormValue);
+//     //   limit = inFormValue;
+//     //   return true;
+//     // }          
+
+//     return false;
+//   }
+
+//  protected:
+//   uint32_t inCfgValue = 0;
+// };  // class buttonPara
 
 
 };  // namespace Html

@@ -1,3 +1,5 @@
+#ifndef VOIS_H_
+#define VOIS_H_
 
 void toggle(uint8_t _relay) {
   if (digitalRead(_relay) == HIGH) {
@@ -12,7 +14,7 @@ void hop(uint32_t stop, uint32_t start) {
     static int32_t debounceTime = 0;
     difference = (stop - start);
     if (millis() - debounceTime > debounce) {
-      if (difference > filter && difference < (filter + 5000))) {
+      if (difference > filter && difference < (filter + 5000)) {
         relay->toggle();
         debounceTime = millis();
         Supla::Notification::SendF(-1,"Basic R4 - test", "Time: %lu",difference);
@@ -21,3 +23,5 @@ void hop(uint32_t stop, uint32_t start) {
     }
   }
 }
+
+#endif
