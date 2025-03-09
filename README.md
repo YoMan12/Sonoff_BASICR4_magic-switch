@@ -1,7 +1,6 @@
 Supla® alternative firmware for Sonoff BASIC R4 with magic switch support.
 
 
-2025.03.09 - @YoMan
 
 SuplaDevice:
   25.01.03 (2024-11-26) 
