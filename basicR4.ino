@@ -35,8 +35,7 @@ void IRAM_ATTR stateChange() {
     hop(stopTime,startTime);
   } else {
     startTime = micros();
-  }
-  
+  }  
 }
 
 void setup() {
@@ -65,15 +64,26 @@ void setup() {
       break;
   }
    
+  // if (debugIsOn) {
+  //   timeValue = new Supla::Sensor::GeneralPurposeMeasurement();
+  //   timeValue->setInitialCaption("Time");
+  //   timeValue->setDefaultUnitAfterValue("µs");
+  //   timeValue->setDefaultValuePrecision(0);
+  //   timeValue->setValue(NAN);
+  // }
+
   cfgButton = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
+  cfgButton->addAction(Supla::TOGGLE, relay, Supla::ON_CLICK_1);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
   SuplaDevice.begin();
   
   new Supla::Device::EnterCfgModeAfterPowerCycle(5000, 3, true);
-  Serial1.print("Filter: ");Serial1.println(filter);
 
-  attachInterrupt(INTERRUPT_PIN,stateChange,CHANGE);
+  Supla::Notification::RegisterNotification(-1,true,true,true);  // notifications for device 
+
+  attachInterrupt(INTERRUPT_PIN, stateChange, CHANGE);
+
 }
 
 void loop() {

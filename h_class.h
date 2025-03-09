@@ -21,7 +21,7 @@ class buttonPara : public Supla::HtmlElement {
       sender->sendLabelFor(FILTER_KEY, "Filter");
       sender->send(
               "<input type=\"number\" min=\"0\" max=\"");
-      sender->send(20000);
+      sender->send(10000);
       sender->send("\" step=\"1\" ");
       sender->sendNameAndId(FILTER_KEY);
       sender->send(" value=\"");
@@ -32,41 +32,19 @@ class buttonPara : public Supla::HtmlElement {
       sender->send("</div>");
       // - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲
       
-      // - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼ - ▼
-      sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(DEBOUNCE_KEY, "Debounce");
-      sender->send(
-                 "<input type=\"number\" min=\"0\" max=\"1000\" step=\"1\" ");
-      sender->sendNameAndId(DEBOUNCE_KEY);
-      sender->send(" value=\"");
-      inCfgValue = 5;
-      cfg->getUInt32(DEBOUNCE_KEY, &inCfgValue);
-      sender->send(inCfgValue);
-      sender->send("\">");
-      sender->send("</div>");
-      // - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲ - ▲
-
-
     }  // if cfg
   }    // sender
 
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
-       
+    
     if (cfg && strcmp(key, FILTER_KEY) == 0) {
       uint32_t inFormValue = stringToUInt(value);
 
       cfg->setUInt32(FILTER_KEY, inFormValue);
       filter = inFormValue;
       return true;
-    }
-          
-    if (cfg && strcmp(key, DEBOUNCE_KEY) == 0) {
-      uint32_t inFormValue = stringToUInt(value);
-      cfg->setUInt32(DEBOUNCE_KEY, inFormValue);
-      debounce = inFormValue;
-      return true;
-    }          
+    }        
 
     return false;
   }

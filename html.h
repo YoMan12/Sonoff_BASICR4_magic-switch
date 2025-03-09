@@ -7,8 +7,8 @@ void addHtml () {
   new Supla::Html::ProtocolParameters;
   new Supla::Html::StatusLedParameters;
   Supla::Html::StatusLedParameters htmlStatusLed;
-  SuplaDevice.setName("YoMan - Sonoff basic R4");
-  SuplaDevice.setCustomHostnamePrefix("Supla-YoMan-Sonoff-basicR4");
+  SuplaDevice.setName("Yo - Sonoff basic R4");
+  SuplaDevice.setCustomHostnamePrefix("Supla-Yo-basicR4");
   SuplaDevice.setSwVersion(SOFT_VERSION);
   SuplaDevice.setSuplaCACert(suplaCACert);
   SuplaDevice.setSupla3rdPartyCACert(supla3rdCACert);
@@ -27,11 +27,12 @@ void addHtml () {
   new Supla::Html::DivBegin("box");
   new Supla::Html::H3Tag("Config");
   auto rb = new Supla::Html::SelectInputParameter(
-                            BEHAVIOUR_KEY, "Relay behaviour after reset");
-  rb->registerValue("Always off", 0);
-  rb->registerValue("Always on", 1);
+                            BEHAVIOUR_KEY, "Relay after reset");
+  rb->registerValue("Always OFF", 0);
+  rb->registerValue("Always ON", 1);
   rb->registerValue("Restore", 2);
   new Supla::Html::buttonPara;
   new Supla::Html::ButtonUpdate(&suplaServer);
+
 }
 #endif

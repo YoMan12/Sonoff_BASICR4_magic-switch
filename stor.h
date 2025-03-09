@@ -5,7 +5,7 @@ void addStor () {
   Supla::Storage::Init();
   auto cfg = Supla::Storage::ConfigInstance();
 
-  if (cfg->getInt32(BEHAVIOUR_KEY, &behaviour)) {
+  if (cfg->getInt8(BEHAVIOUR_KEY, &behaviour)) {
     Serial1.printf("# Param [%s]: %d\n", BEHAVIOUR_KEY, behaviour);
   } else {
     Serial1.printf("# Param[%s] is not set\n", BEHAVIOUR_KEY);
@@ -17,11 +17,6 @@ void addStor () {
     Serial1.printf("# Param[%s] is not set\n", FILTER_KEY);
   }
 
-  if (cfg->getUInt32(DEBOUNCE_KEY, &debounce)) {
-    Serial1.printf("# Param [%s]: %d\n", DEBOUNCE_KEY, debounce);
-  } else {
-    Serial1.printf("# Param[%s] is not set\n", DEBOUNCE_KEY);
-  }
 }
 
 
