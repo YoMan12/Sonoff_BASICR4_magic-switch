@@ -9,8 +9,10 @@ void hop(uint32_t stop, uint32_t start) {
       if (difference > filter && difference < (filter + 5000)) {
         relay->toggle();
         debounceTime = millis();
-        Supla::Notification::SendF(-1,"Basic R4 - test", "Time: %lu\n",difference);
-        timeValue->setValue(difference);
+        // if (debugIsOn) {
+        //   Supla::Notification::SendF(-1,"Basic R4 - test", "Time: %lu\n",difference);
+        //   timeValue->setValue(difference);
+        // }
       }
     }
   }

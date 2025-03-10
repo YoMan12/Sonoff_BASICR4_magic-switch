@@ -32,6 +32,12 @@ void addHtml () {
   rb->registerValue("Always ON", 1);
   rb->registerValue("Restore", 2);
   new Supla::Html::buttonPara;
+  new Supla::Html::CustomCheckboxParameter(MAGIC_SWITCH_IS_ON_KEY, "MagicSwitch");
+  if (magicswitchIsOn == 1) {
+    new Supla::Html::DivEnd();
+    new Supla::Html::DivBegin("box");
+    new Supla::Html::H3Tag("Test");    
+  }
   new Supla::Html::ButtonUpdate(&suplaServer);
 
 }
