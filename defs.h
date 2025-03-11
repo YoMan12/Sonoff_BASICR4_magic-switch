@@ -5,7 +5,7 @@ espBoards:
   esp32:3.1.1 (ESP32C3 Dev Module)
 */
 #define BASICR4
-#define SOFT_VERSION "2025.03.09 @YoMan"
+#define SOFT_VERSION "2025.03.11 @YoMan"
 
 #define STATUS_LED_GPIO 6
 #define CFG_BUTTON_PIN 9
