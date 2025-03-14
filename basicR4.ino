@@ -1,7 +1,7 @@
 /*
   Copyright (C) AC SOFTWARE SP. Z O.O.
 
-  This program is free software; you can redistribute it and/or
+  This program is free software; you canimage.png redistribute it and/or
   modify it under the terms of the GNU General Public License
   as published by the Free Software Foundation; either version 2
   of the License, or (at your option) any later version.
@@ -40,7 +40,6 @@ void IRAM_ATTR stateChange() {
 
 void setup() {
   
-  addHtml();
 
   pinMode(INTERRUPT_PIN, INPUT_PULLUP);
 
@@ -48,6 +47,8 @@ void setup() {
   SUPLA_LOG_DEBUG(SOFT_VERSION);
 
   addStor();
+  addHtml();
+  
   delay(300);
 
   relay = new Supla::Control::Relay(RELAY_PIN,true,224);
@@ -64,13 +65,13 @@ void setup() {
       break;
   }
    
-  // if (debugIsOn) {
-  //   timeValue = new Supla::Sensor::GeneralPurposeMeasurement();
-  //   timeValue->setInitialCaption("Time");
-  //   timeValue->setDefaultUnitAfterValue("µs");
-  //   timeValue->setDefaultValuePrecision(0);
-  //   timeValue->setValue(NAN);
-  // }
+  if (debugChannelIsOn) {
+    timeValue = new Supla::Sensor::GeneralPurposeMeasurement();
+    timeValue->setInitialCaption("Time");
+    timeValue->setDefaultUnitAfterValue("µs");
+    timeValue->setDefaultValuePrecision(0);
+    timeValue->setValue(NAN);
+  }
 
   cfgButton = new Supla::Control::Button(CFG_BUTTON_PIN, true, true);
   cfgButton->addAction(Supla::TOGGLE, relay, Supla::ON_CLICK_1);
