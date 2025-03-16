@@ -43,6 +43,7 @@ void setup() {
 
   pinMode(INTERRUPT_PIN, INPUT_PULLUP);
 
+  Serial.begin(115200);
   Serial1.begin(115200,SERIAL_8N1, 20,21);
   SUPLA_LOG_DEBUG(SOFT_VERSION);
 

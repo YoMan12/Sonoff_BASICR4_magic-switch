@@ -34,9 +34,9 @@ void addHtml () {
 
 
   new Supla::Html::DivBegin("box");
-  new Supla::Html::H3Tag("Magic Switch Menu");  
-  new Supla::Html::myCheckBox;
-  new Supla::Html::DivEnd();
+    new Supla::Html::H3Tag("Magic Switch Menu");  
+    new Supla::Html::myCheckBox;
+    // new Supla::Html::DivEnd();
 
   new Supla::Html::ButtonUpdate(&suplaServer);
   

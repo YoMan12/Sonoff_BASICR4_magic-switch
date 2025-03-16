@@ -201,15 +201,15 @@ class myCheckBox : public Supla::HtmlElement {
     
     if (cfg && strcmp(key, MAGIC_SWITCH_IS_ON_KEY) == 0) {
       uint8_t inCfgValue = (strcmp(value, "on") == 0 ? 1 : 0);
-      magicSwitchIsOn = inCfgValue;
       cfg->setUInt8(MAGIC_SWITCH_IS_ON_KEY, inCfgValue);
+      magicSwitchIsOn = inCfgValue;
       return true;
     }
 
     if (cfg && strcmp(key, FILTER_KEY) == 0) {
-      uint32_t inFormValue = stringToUInt(value);
-      filter = inFormValue;
-      cfg->setUInt32(FILTER_KEY, inFormValue);
+      uint32_t inCfgValue = stringToUInt(value);
+      cfg->setUInt32(FILTER_KEY, inCfgValue);
+      filter = inCfgValue;
       return true;
     }
     
@@ -217,22 +217,22 @@ class myCheckBox : public Supla::HtmlElement {
       uint8_t inCfgValue = (strcmp(value, "on") == 0 ? 1 : 0);
       debugChannelIsOn = inCfgValue; 
       cfg->setUInt8(DEBUG_CH_IS_ON_KEY, inCfgValue);
+      debugChannelIsOn = inCfgValue; 
       return true;
     }
-    
-    
+       
     if (cfg && strcmp(key, FILTER_LIMIT_IS_ON_KEY) == 0) {
       uint8_t inCfgValue = (strcmp(value, "on") == 0 ? 1 : 0);
       filterLimitIsOn = inCfgValue;
       cfg->setUInt8(FILTER_LIMIT_IS_ON_KEY, inCfgValue);
+      filterLimitIsOn = inCfgValue;
       return true;
     }
 
     if (cfg && strcmp(key, LIMIT_KEY) == 0) {
-      uint32_t inFormValue = stringToUInt(value);
-
-      cfg->setUInt32(LIMIT_KEY, inFormValue);
-      limit = inFormValue;
+      uint32_t inCfgValue = stringToUInt(value);
+      cfg->setUInt32(LIMIT_KEY, inCfgValue);
+      limit = inCfgValue;
       return true;
     }
 
